@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الحقيبة التفاعلية للدراسات الاجتماعية - المنهج العماني</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --secondary-blue: #3b82f6;
+            --emerald: #10b981;
+            --emerald-dark: #059669;
+            --gold: #f59e0b;
+            --gold-dark: #d97706;
+            --purple: #8b5cf6;
+            --deep-purple: #7c3aed;
+            --gray-100: #f3f4f6;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+            color: var(--gray-900);
+            background-color: #fff;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* الترويسة */
+        header {
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--deep-purple));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--gray-800);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.4rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+        
+        /* القسم الرئيسي */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, #f0f7ff 0%, #f8faff 100%);
+            text-align: center;
+        }
+        
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .hero-text .app-title {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .hero-text h1 {
+            font-size: 2.5rem;
+            line-height: 1.3;
+            color: var(--gray-900);
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--gray-800);
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: var(--dark-blue);
+        }
+        
+        .grade-badges {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .grade-badge {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            text-align: right;
+            transition: transform 0.3s;
+        }
+        
+        .grade-badge:hover {
+            transform: translateY(-5px);
+        }
+        
+        .grade-badge h4 {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .grade-badge p {
+            font-size: 0.95rem;
+            color: var(--gray-800);
+            margin-bottom: 0;
+        }
+        
+        /* العناوين والأقسام */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--gray-900);
+            margin-bottom: 50px;
+            position: relative;
+            font-weight: 800;
+        }
+        
+        /* المميزات */
+        .features { padding: 80px 0; background: white; }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            padding: 30px;
+            border-radius: 15px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.03);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover { transform: translateY(-10px); }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .feature-icon.offline { background: rgba(37, 99, 235, 0.1); color: var(--primary-blue); }
+        .feature-icon.interactive { background: rgba(16, 185, 129, 0.1); color: var(--emerald); }
+        .feature-icon.comprehensive { background: rgba(245, 158, 11, 0.1); color: var(--gold); }
+        .feature-icon.assessment { background: rgba(139, 92, 246, 0.1); color: var(--purple); }
+        
+        .feature-card h3 { font-size: 1.3rem; margin-bottom: 10px; }
+        .feature-card p { font-size: 0.95rem; color: var(--gray-800); }
+        
+        /* المحتوى */
+        .showcase { padding: 80px 0; background: #f9fafb; }
+        
+        .app-content-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .content-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .card-header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 25px;
+            position: relative;
+        }
+        
+        .card-header h3 { font-size: 1.6rem; }
+        .card-badge {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .card-content { padding: 25px; }
+        .unit-item {
+            padding: 15px;
+            background: #f0f7ff;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-right: 3px solid var(--primary-blue);
+        }
+        .unit-item h5 { font-size: 1.05rem; margin-bottom: 5px; }
+        .unit-item p { font-size: 0.9rem; color: var(--gray-800); }
+        
+        /* التحميل */
+        .download { padding: 80px 0; background: white; text-align: center; }
+        
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+        
+        .download-card {
+            padding: 40px 20px;
+            border-radius: 15px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .download-card:hover { transform: translateY(-10px); }
+        
+        .download-icon { font-size: 3rem; margin-bottom: 20px; height: 60px; }
+        .windows .download-icon { color: #0078d6; }
+        .android .download-icon { color: #3ddc84; }
+        .ios .download-icon { color: #000000; }
+        .web .download-icon { color: var(--emerald); }
+        
+        .download-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .download-card p { font-size: 0.95rem; margin-bottom: 25px; color: var(--gray-800); }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-blue);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        .download-btn:hover { background: var(--dark-blue); }
+        
+        /* تنسيق الملاحظة أسفل الزر */
+        .download-note {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 15px;
+            display: block;
+            line-height: 1.4;
+        }
+        
+        /* التذييل */
+        footer { background: var(--gray-900); color: white; padding: 60px 0 30px; text-align: center; }
+        .contact-info { display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap; }
+        .contact-item { display: flex; align-items: center; gap: 10px; color: #ccc; }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.9rem; color: #888; }
+
+        /* التجاوب (Mobile) */
+        @media (max-width: 768px) {
+            html { font-size: 14px; }
+            nav ul { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero-text h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+            .download-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                <span>الحقيبة التفاعلية</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#features">المميزات</a></li>
+                    <li><a href="#showcase">المحتوى</a></li>
+                    <li><a href="#download">التحميل</a></li>
+                    <li><a href="#contact">التواصل</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <div class="app-title">منصة تعليمية رقمية شاملة</div>
+                <h1>الحقيبة التفاعلية للدراسات الاجتماعية</h1>
+                <p>صممت لتواكب التطور في المناهج الدراسية، وتوفر تجربة تعلم نشطة وممتعة تعزز الفهم العميق للمفاهيم الجغرافية والتاريخية والوطنية.</p>
+                
+                <div class="hero-btns">
+                    <a href="#download" class="btn btn-primary">
+                        <i class="fas fa-download"></i> <span>تحميل التطبيق</span>
+                    </a>
+                </div>
+                
+                <div class="grade-badges">
+                    <div class="grade-badge">
+                        <h4><i class="fas fa-graduation-cap"></i> الصف السابع</h4>
+                        <p>الطقس والمناخ، الدولة العباسية، ومؤسسات الدولة الحديثة.</p>
+                    </div>
+                    <div class="grade-badge">
+                        <h4><i class="fas fa-graduation-cap"></i> الصف السادس</h4>
+                        <p>السكان، الحضارة الإسلامية (الميوبون)، والمجتمع المدني.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">مميزات المنصة التعليمية</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon offline"><i class="fas fa-wifi-slash"></i></div>
+                    <h3>يعمل بلا إنترنت</h3>
+                    <p>لا تحتاج لاتصال دائم بالإنترنت، حمل التطبيق وتعلم في أي مكان وزمان.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon interactive"><i class="fas fa-hand-pointer"></i></div>
+                    <h3>تفاعلي بالكامل</h3>
+                    <p>خرائط حية، محاكاة للبراكين والرياح، وأدوات تفاعلية.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon comprehensive"><i class="fas fa-book"></i></div>
+                    <h3>شامل للمنهج</h3>
+                    <p>يغطي كافة وحدات الفصل الدراسي الثاني للصفوف 6 و 7.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon assessment"><i class="fas fa-clipboard-check"></i></div>
+                    <h3>تقييم ذاتي</h3>
+                    <p>اختبارات تفاعلية مع تصحيح فوري وتقارير أداء.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="showcase" id="showcase">
+        <div class="container">
+            <h2 class="section-title">المحتوى التعليمي للتطبيق</h2>
+            <div class="app-content-showcase">
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="card-badge">الصف السادس</div>
+                        <h3>الحقيبة التفاعلية</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="unit-item">
+                            <h5>الوحدة الأولى: السكان</h5>
+                            <p>دراسة البيانات السكانية، والنمو، والتركيب السكاني.</p>
+                        </div>
+                        <div class="unit-item">
+                            <h5>البيانات السكانية</h5>
+                            <p>مصادر البيانات السكانية وأهميتها</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="card-badge">الصف السابع</div>
+                        <h3>الحقيبة التفاعلية</h3>
+                    </div>
+                    <div class="card-content">
+                        <div class="unit-item">
+                            <h5>الوحدة الأولى: الطقس والمناخ</h5>
+                            <p>دراسة الطقس والمناخ، والعوامل المؤثرة فيها.</p>
+                        </div>
+                        <div class="unit-item">
+                            <h5>مناخ سلطنة عمان</h5>
+                            <p>العوامل المؤثرة في مناخ عمان، والأقاليم المناخية.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download" id="download">
+        <div class="container">
+            <h2 class="section-title">حمّل التطبيق الآن</h2>
+            <div class="download-grid">
+                <div class="download-card windows">
+                    <div class="download-icon"><i class="fab fa-windows"></i></div>
+                    <h3>نسخة الويندوز</h3>
+                    <p>ويندوز 10 فما فوق.</p>
+                    <a href="https://drive.google.com/file/d/1UzsbUfF-9tHS4-67LlHpBf40DREZvkoa/view?usp=sharing" class="download-btn" target="_blank"><i class="fas fa-download"></i> الانتقال للتحميل</a>
+                    <span class="download-note">* ستظهر رسالة "تعذر الفحص"، اضغط <b>"التنزيل على أي حال"</b>.</span>
+                </div>
+                <div class="download-card android">
+                    <div class="download-icon"><i class="fab fa-android"></i></div>
+                    <h3>نسخة الأندرويد</h3>
+                    <p>أندرويد 8 فما فوق.</p>
+                    <a href="https://drive.google.com/file/d/1g4cXrnVvdXc58dHNvmPngXUyJPHiHbAE/view?usp=sharing" class="download-btn" target="_blank"><i class="fas fa-download"></i> الانتقال للتحميل</a>
+                    <span class="download-note">* ستظهر رسالة "تعذر الفحص"، اضغط <b>"التنزيل على أي حال"</b>.</span>
+                </div>
+                <div class="download-card ios">
+                    <div class="download-icon"><i class="fab fa-apple"></i></div>
+                    <h3>نسخة الآيفون</h3>
+                    <p>آيفون وآيباد.</p>
+                    <a href="https://drive.google.com/file/d/1z_9QC9GkwoZWXp6lQJXUlgBDhX83keVK/view?usp=sharing" class="download-btn" target="_blank"><i class="fas fa-download"></i> الانتقال للتحميل</a>
+                </div>
+                <div class="download-card web">
+                    <div class="download-icon"><i class="fas fa-globe"></i></div>
+                    <h3>الموقع المباشر</h3>
+                    <p>تصفح من المتصفح مباشرة.</p>
+                    <a href="https://social-studies-6-7.abnaltaeebat2.workers.dev/" class="download-btn" target="_blank"><i class="fas fa-external-link-alt"></i> دخول مباشر</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="developer-info">
+                <h3>أ. محمد درويش</h3>
+                <p>مطور الحقيبة التفاعلية للدراسات الاجتماعية - المنهج العماني.</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item"><i class="fas fa-envelope"></i> <span>--------</span></div>
+                <div class="contact-item"><i class="fab fa-whatsapp"></i> <span>+968 98344555</span></div>
+            </div>
+            <div class="copyright">
+                <p>© 2026 الحقيبة التفاعلية للدراسات الاجتماعية.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // إعدادات التفاعل والقائمة فقط
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu.style.display === 'flex') navMenu.style.display = 'none';
+            else {
+                navMenu.style.display = 'flex';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.position = 'absolute';
+                navMenu.style.top = '100%';
+                navMenu.style.right = '0';
+                navMenu.style.width = '200px';
+                navMenu.style.background = 'white';
+                navMenu.style.padding = '20px';
+                navMenu.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
